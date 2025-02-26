@@ -1,9 +1,24 @@
-import React from 'react'
+"use client";
+import React, { useState } from 'react';
+import { DatePicker, Space } from 'antd';
+import dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 
-type Props = {}
+dayjs.extend(customParseFormat);
 
-export default function ListOfStudent({}: Props) {
+const dateFormat = 'DD/MM/YYYY';
+
+const Students = () => {
+  const currentDate = dayjs();
+
   return (
-    <div>ListOfStudent</div>
-  )
-}
+    <section>
+      <DatePicker 
+        defaultValue={currentDate} 
+        format={dateFormat}
+      />
+    </section>
+  );
+};
+
+export default Students;

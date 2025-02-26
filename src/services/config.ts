@@ -12,3 +12,9 @@ https.interceptors.request.use((config) => {
   }
   return config;
 }, (error) => Promise.reject(error));
+
+export const roleRedirectPaths = {
+  student: '/dashboard/student',
+  instructor: '/dashboard/instructor',
+  error: '/error'
+}

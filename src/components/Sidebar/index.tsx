@@ -141,14 +141,16 @@ export default function Sidebar({ setLoading }: SidebarProps) {
           }}
         />
       </div>
-      <Menu
-        theme="light"
-        mode="inline"
-        selectedKeys={[selectedKey]} 
-        style={{ background: colorBgBase, color: colorTextBase }}
-        items={items}
-        onClick={handleMenuClick} 
-      />
+      <div style={{ maxHeight: "calc(100vh - 64px)", overflowY: "auto" }}>
+        <Menu
+          theme="light"
+          mode="inline"
+          selectedKeys={[selectedKey]}
+          style={{ background: colorBgBase, color: colorTextBase }}
+          items={items}
+          onClick={handleMenuClick}
+        />
+      </div>
     </Sider>
   );
 }

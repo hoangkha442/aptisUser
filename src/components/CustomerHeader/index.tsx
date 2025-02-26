@@ -27,7 +27,7 @@ export default function CustomHeader({ user }: UserProps) {
   const handleLogout = () => {
     dispatch(logout());
     message.success("Đăng xuất thành công!");
-    router.push("/auth/login");
+    router.push("/");
   };
 
   // ✅ Định nghĩa Breadcrumb dựa vào URL & Role

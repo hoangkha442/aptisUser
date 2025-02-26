@@ -15,8 +15,6 @@ export default function LoginForm() {
 
   useEffect(() => {
     const storedUser = userLocalStorage.get();
-    console.log('storedUser: ', storedUser);
-
     if (storedUser && storedUser.token) {
       if (storedUser.role === "student") {
         router.push("/dashboard/student");
