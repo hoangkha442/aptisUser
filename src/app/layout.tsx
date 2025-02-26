@@ -3,7 +3,7 @@
 import { Provider } from "react-redux";
 import { store } from "@/store/store";
 import "./globals.css";
-
+import '@ant-design/v5-patch-for-react-19'; 
 
 
 export default function RootLayout({
