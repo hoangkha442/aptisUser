@@ -57,6 +57,7 @@ const TeacherLayout = ({ children }: LayoutProps) => {
                 background: "#ffffff",
                 borderRadius: 8,
                 position: "relative",
+                overflowY: "auto", 
               }}
             >
               {loading && (

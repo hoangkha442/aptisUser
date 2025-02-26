@@ -21,16 +21,14 @@ interface UserProps {
 export default function CustomHeader({ user }: UserProps) {
   const dispatch = useAppDispatch();
   const router = useRouter();
-  const pathname = usePathname(); // ✅ Lấy URL hiện tại
+  const pathname = usePathname();
 
-  // ✅ Hàm xử lý Logout
   const handleLogout = () => {
     dispatch(logout());
     message.success("Đăng xuất thành công!");
     router.push("/");
   };
 
-  // ✅ Định nghĩa Breadcrumb dựa vào URL & Role
   const generateBreadcrumbs = () => {
     const pathArray = pathname.split("/").filter((x) => x); // Bỏ dấu `/` thừa
     let breadcrumbs = [{ title: <HomeOutlined />, href: "/dashboard" }];
@@ -38,7 +36,6 @@ export default function CustomHeader({ user }: UserProps) {
     pathArray.forEach((path, index) => {
       const href = `/${pathArray.slice(0, index + 1).join("/")}`;
 
-      // ✅ Định nghĩa tiêu đề động dựa vào path
       const breadcrumbTitle: { [key: string]: string } = {
         dashboard: "Trang chủ",
         student: "Học viên",
