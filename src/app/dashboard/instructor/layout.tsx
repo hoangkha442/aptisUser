@@ -5,7 +5,7 @@ import { Layout, ConfigProvider, Spin } from "antd";
 import { userLocalStorage } from "@/services/LocalService";
 import { authServices } from "@/services/authServices";
 import CustomHeader from "@/components/CustomerHeader";
-import { User } from "@/types/UserType";
+import { User } from "@/types/userType";
 
 const { Content } = Layout;
 

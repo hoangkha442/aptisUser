@@ -32,8 +32,13 @@ export const loginUser = createAsyncThunk(
       const res = await authServices.login(credentials);
       userLocalStorage.set(res.data); // ✅ Lưu user vào localStorage
       return res.data;
-    } catch (error: any) {
-      return rejectWithValue(error.response?.data?.message || "Login failed");
+    } catch (error: unknown) { // ✅ Changed `any` to `unknown`
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      } else if (typeof error === "object" && error !== null && "response" in error) {
+        return rejectWithValue((error as { response?: { data?: { message?: string } } }).response?.data?.message || "Login failed");
+      }
+      return rejectWithValue("An unknown error occurred");
     }
   }
 );
@@ -47,7 +52,7 @@ const authSlice = createSlice({
       state.user = null;
       state.loading = false;
       state.error = null;
-      userLocalStorage.remove(); // 
+      userLocalStorage.remove();
     },
   },
   extraReducers: (builder) => {

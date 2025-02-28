@@ -37,10 +37,17 @@ export default function LoginForm() {
       } else {
         console.error("Lỗi: Vai trò không hợp lệ", userData.role);
       }
-    } catch (err: any) {
-      console.error("Lỗi từ server:", err);
+    } catch (err: unknown) { // ✅ Changed `any` to `unknown`
+      if (err instanceof Error) {
+        console.error("Lỗi từ server:", err.message);
+        message.error(err.message);
+      } else {
+        console.error("Lỗi không xác định:", err);
+        message.error("Đã xảy ra lỗi không xác định.");
+      }
     }
   };
+  
 
   return (
     <Card>

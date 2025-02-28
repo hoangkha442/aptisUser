@@ -30,12 +30,12 @@ export default function CustomHeader({ user }: UserProps) {
   };
 
   const generateBreadcrumbs = () => {
-    const pathArray = pathname.split("/").filter((x) => x); // Bỏ dấu `/` thừa
-    let breadcrumbs = [{ title: <HomeOutlined />, href: "/dashboard" }];
-
+    const pathArray = pathname.split("/").filter((x) => x); 
+    const breadcrumbs = [{ title: <HomeOutlined />, href: "/dashboard" }]; 
+  
     pathArray.forEach((path, index) => {
       const href = `/${pathArray.slice(0, index + 1).join("/")}`;
-
+  
       const breadcrumbTitle: { [key: string]: string } = {
         dashboard: "Trang chủ",
         student: "Học viên",
@@ -48,15 +48,16 @@ export default function CustomHeader({ user }: UserProps) {
         classes: "Quản lý lớp học",
         exams: "Ngân hàng đề thi",
       };
-
+  
       breadcrumbs.push({
         title: <span>{breadcrumbTitle[path] || path}</span>,
         href,
       });
     });
-
+  
     return breadcrumbs;
   };
+  
 
   const breadcrumbItems = generateBreadcrumbs();
 
