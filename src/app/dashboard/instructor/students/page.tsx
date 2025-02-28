@@ -24,21 +24,23 @@ const Students: React.FC = () => {
   const totalStudents = statistics?.totalStudents || 0;
   const graduatingStudents = statistics?.graduatingStudents || 0;
 
+  // ✅ FIX: Corrected age distribution logic
   const ageDistributionData = statistics?.ageDistribution?.map((item) => ({
-    ageGroup: `${dayjs().diff(dayjs(item.date_of_birth), "year")} tuổi`,
-    "Học viên": item._count.student_id,
+    ageGroup: `${item.age} tuổi`, // ✅ Use `age` instead of `date_of_birth`
+    "Học viên": item.count, // ✅ Use `count` instead of `_count.student_id`
   })) || [];
 
   const sourceData = statistics?.sourceDistribution?.map((item) => ({
     source: item.source,
-    "Học viên": item._count.user_id,
+    "Học viên": item.count, // ✅ Fixed `_count.user_id`
   })) || [];
 
   const newStudentsData = statistics?.newStudentsData?.map((item) => ({
-    month: dayjs(item.enrollment_date).format("MM/YYYY"),
-    currentYear: item._count.student_id,
-    previousYear: Math.floor(item._count.student_id * 0.8),
+    month: item.month, // ✅ Corrected property name
+    currentYear: item.count, // ✅ Use `count`
+    previousYear: Math.floor(item.count * 0.8), // Simulated previous year data
   })) || [];
+  
 
   return (
     <section>

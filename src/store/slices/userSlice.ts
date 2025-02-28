@@ -10,15 +10,15 @@ interface User {
   profile_image?: string;
   role: string;
 }
-interface UserUpdate{
-  user_id: number;
-  password: string;
-  email: string;
-  full_name: string;
-  phone_number?: string;
-  profile_image?: string;
-  role: string;
-}
+// interface UserUpdate{
+//   user_id: number;
+//   password: string;
+//   email: string;
+//   full_name: string;
+//   phone_number?: string;
+//   profile_image?: string;
+//   role: string;
+// }
 
 interface Statistics {
   totalStudents: number;

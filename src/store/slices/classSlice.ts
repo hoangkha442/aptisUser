@@ -56,9 +56,9 @@ export const fetchClassStatistics = createAsyncThunk(
 
       // Ensure API response fields are numbers
       return {
-        classDetails: response.data.classDetails.map((cls: any) => ({
+        classDetails: response.data.classDetails.map((cls: Record<string, unknown>) => ({
           class_id: Number(cls.class_id),
-          class_name: cls.class_name,
+          class_name: String(cls.class_name),
           max_students: Number(cls.max_students) || 0,
           completed_sessions: Number(cls.completed_sessions) || 0,
           participation_rate: Number(cls.participation_rate) || 0,
@@ -71,13 +71,17 @@ export const fetchClassStatistics = createAsyncThunk(
         totalClasses: response.data.totalClasses,
         upcomingClosingClasses: response.data.upcomingClosingClasses,
       };
-    } catch (error: any) {
-      return rejectWithValue(
-        error.response?.data?.message || "Lỗi lấy thống kê lớp học"
-      );
+    } catch (error: unknown) {
+      if (error instanceof Error) {
+        return rejectWithValue(error.message);
+      } else if (typeof error === "object" && error !== null && "response" in error) {
+        return rejectWithValue((error as { response?: { data?: { message?: string } } }).response?.data?.message || "Lỗi lấy thống kê lớp học");
+      }
+      return rejectWithValue("Lỗi không xác định");
     }
   }
 );
+
 
 // Create Slice
 const classSlice = createSlice({
