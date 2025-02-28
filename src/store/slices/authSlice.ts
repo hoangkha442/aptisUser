@@ -47,7 +47,7 @@ const authSlice = createSlice({
       state.user = null;
       state.loading = false;
       state.error = null;
-      userLocalStorage.remove(); // ✅ Xóa thông tin user khỏi localStorage khi logout
+      userLocalStorage.remove(); // 
     },
   },
   extraReducers: (builder) => {

@@ -5,6 +5,7 @@ import { Layout, ConfigProvider, Spin } from "antd";
 import { userLocalStorage } from "@/services/LocalService";
 import { authServices } from "@/services/authServices";
 import CustomHeader from "@/components/CustomerHeader";
+import { User } from "@/types/UserType";
 
 const { Content } = Layout;
 
@@ -12,12 +13,6 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-interface User {
-  username: string;
-  fullName: string;
-  avatar: string;
-  role: string;
-}
 
 const TeacherLayout = ({ children }: LayoutProps) => {
   const [user, setUser] = useState<User | null>(null);

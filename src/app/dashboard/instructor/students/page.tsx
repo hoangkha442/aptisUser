@@ -21,7 +21,6 @@ const Students: React.FC = () => {
     dispatch(fetchUserStatistics());
   }, [dispatch]);
 
-  // Xử lý dữ liệu từ statistics
   const totalStudents = statistics?.totalStudents || 0;
   const graduatingStudents = statistics?.graduatingStudents || 0;
 

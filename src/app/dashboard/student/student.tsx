@@ -1,8 +1,7 @@
 import React from 'react'
 
-type Props = {}
 
-export default function student({}: Props) {
+export default function student() {
   return (
     <div>student</div>
   )

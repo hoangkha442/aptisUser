@@ -35,7 +35,7 @@ const initialState: UserState = {
     error: null,
 };
 
-// ✅ API: Lấy danh sách tất cả người dùng
+// API: Lấy danh sách tất cả người dùng
 export const fetchUsers = createAsyncThunk(
   "user/fetchUsers",
   async (_, { rejectWithValue }) => {
@@ -48,7 +48,7 @@ export const fetchUsers = createAsyncThunk(
   }
 );
 
-// ✅ API: Lấy thông tin người dùng theo ID
+// API: Lấy thông tin người dùng theo ID
 export const fetchUserById = createAsyncThunk(
   "user/fetchUserById",
   async (userId: number, { rejectWithValue }) => {
@@ -61,7 +61,7 @@ export const fetchUserById = createAsyncThunk(
   }
 );
 
-// ✅ API: Cập nhật thông tin người dùng
+//  API: Cập nhật thông tin người dùng
 export const updateUser = createAsyncThunk(
   "user/updateUser",
   async ({ userId, userData }: { userId: number; userData: Partial<User> }, { rejectWithValue }) => {
@@ -74,7 +74,7 @@ export const updateUser = createAsyncThunk(
   }
 );
 
-// ✅ API: Xóa người dùng
+// API: Xóa người dùng
 export const deleteUser = createAsyncThunk(
   "user/deleteUser",
   async (userId: number, { rejectWithValue }) => {
@@ -87,7 +87,7 @@ export const deleteUser = createAsyncThunk(
   }
 );
 
-// ✅ API: Lấy danh sách học viên
+// API: Lấy danh sách học viên
 export const fetchStudents = createAsyncThunk(
   "user/fetchStudents",
   async (_, { rejectWithValue }) => {
@@ -126,7 +126,7 @@ const userSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      // ✅ Fetch Users
+      // Fetch Users
       .addCase(fetchUsers.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -140,7 +140,7 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // ✅ Fetch User by ID
+      // Fetch User by ID
       .addCase(fetchUserById.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -154,7 +154,7 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // ✅ Update User
+      // Update User
       .addCase(updateUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -170,7 +170,7 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // ✅ Delete User
+      // Delete User
       .addCase(deleteUser.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -184,7 +184,7 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // ✅ Fetch Students
+      // Fetch Students
       .addCase(fetchStudents.pending, (state) => {
         state.loading = true;
         state.error = null;
@@ -198,7 +198,7 @@ const userSlice = createSlice({
         state.error = action.payload as string;
       })
 
-      // ✅ Fetch User Statistics
+      // Fetch User Statistics
       .addCase(fetchUserStatistics.pending, (state) => {
         state.loading = true;
         state.error = null;
